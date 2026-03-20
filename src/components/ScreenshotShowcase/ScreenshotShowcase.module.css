@@ -1,0 +1,119 @@
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.image-right {
+  direction: rtl;
+}
+
+.image-right .content {
+  direction: ltr;
+}
+
+.image-right .imageContainer {
+  direction: ltr;
+}
+
+.imageContainer {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background-color: var(--color-surface);
+}
+
+.browserFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+  display: flex;
+  align-items: center;
+  padding-left: var(--space-md);
+  gap: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.browserDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-border-dark);
+}
+
+.browserDot:nth-child(1) {
+  background-color: #ff5f57;
+}
+
+.browserDot:nth-child(2) {
+  background-color: #febc2e;
+}
+
+.browserDot:nth-child(3) {
+  background-color: #28c840;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding-top: 36px;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-4xl) var(--space-2xl);
+  padding-top: calc(var(--space-4xl) + 36px);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-subtle) 0%,
+    var(--color-bg) 100%
+  );
+  color: var(--color-text-muted);
+  min-height: 320px;
+}
+
+.placeholder svg {
+  opacity: 0.4;
+}
+
+.placeholder span {
+  font-family: var(--font-display);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.content {
+  align-items: flex-start;
+}
+
+/* Mobile */
+@media (max-width: 968px) {
+  .showcase {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .image-right {
+    direction: ltr;
+  }
+
+  .imageContainer {
+    order: -1;
+  }
+
+  .content {
+    text-align: center;
+    align-items: center;
+  }
+}

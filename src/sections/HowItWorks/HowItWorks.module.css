@@ -1,0 +1,125 @@
+.stepsContainer {
+  position: relative;
+  margin-top: var(--space-4xl);
+}
+
+.timeline {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 50%,
+    var(--color-primary) 100%
+  );
+  opacity: 0.4;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stepIcon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-brand);
+}
+
+.iconEmoji {
+  font-size: 2rem;
+}
+
+.stepNumber {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .timeline {
+    display: block;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .step {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .stepIcon {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+  }
+
+  .iconEmoji {
+    font-size: 1.5rem;
+  }
+}

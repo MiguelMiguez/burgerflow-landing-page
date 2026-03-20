@@ -1,0 +1,63 @@
+.section {
+  position: relative;
+  width: 100%;
+}
+
+/* Themes */
+.light {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+.dark {
+  background-color: var(--color-charcoal);
+  color: var(--color-text-inverse);
+}
+
+.brand {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  color: var(--color-white);
+}
+
+.cream {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Spacing */
+.spacing-sm {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.spacing-md {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.spacing-lg {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.spacing-xl {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-5xl);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .spacing-lg {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .spacing-xl {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+  }
+}

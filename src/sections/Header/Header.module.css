@@ -1,0 +1,181 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  padding: var(--space-lg) 0;
+  transition: all var(--transition-base);
+}
+
+.scrolled {
+  padding: var(--space-md) 0;
+  background-color: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  list-style: none;
+  flex: 1;
+  margin: 0 auto;
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.mobileMenuBtn {
+  display: none;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menuBar {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.menuBar::before,
+.menuBar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.menuBar::before {
+  top: -8px;
+}
+
+.menuBar::after {
+  bottom: -8px;
+}
+
+.menuBar.open {
+  background-color: transparent;
+}
+
+.menuBar.open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menuBar.open::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 968px) {
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-xl);
+    background-color: var(--color-bg-subtle);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .navLinks.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navLink {
+    font-size: var(--font-size-xl);
+  }
+
+  .actions {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

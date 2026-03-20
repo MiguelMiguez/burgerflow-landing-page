@@ -1,0 +1,68 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Sizes */
+.sm {
+  padding: 4px 10px;
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  padding: 6px 14px;
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding: 8px 18px;
+  font-size: var(--font-size-base);
+}
+
+/* Variants */
+.brand {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-lighter) 0%,
+    var(--color-primary-light) 100%
+  );
+  color: var(--color-primary);
+}
+
+.success {
+  background-color: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.neutral {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+.outline {
+  background-color: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hasIcon .icon svg {
+  width: 1em;
+  height: 1em;
+}
