@@ -29,7 +29,14 @@ export function Header() {
       <Container size="xl">
         <nav className={styles.nav}>
           <a href="#" className={styles.logo}>
-            <img className="logoimage" src={LogoIcon} alt="BurgerFlow Logo" />
+            <div className={styles.logoIcon}>
+              <img
+                className={styles.logoimage}
+                src={LogoIcon}
+                alt="BurgerFlow Logo"
+              />
+            </div>
+
             <span className={styles.logoText}>BurgerFlow</span>
           </a>
 

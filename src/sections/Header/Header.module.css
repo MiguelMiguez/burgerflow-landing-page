@@ -28,9 +28,12 @@
   gap: var(--space-sm);
   text-decoration: none;
   z-index: 10;
-  width: 50px;
-  height: 50px;
   flex-shrink: 0;
+}
+
+.logoimage {
+  width: 40px;
+  height: 40px;
 }
 
 .logoIcon {
@@ -88,7 +91,9 @@
 .actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--space-md);
+  min-width: 200px;
 }
 
 .mobileMenuBtn {
