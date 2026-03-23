@@ -1,10 +1,10 @@
+import { NavBar } from "../../components";
 import {
-  Header,
   Hero,
   Features,
   Platform,
   HowItWorks,
-  Testimonials,
+  Benefits,
   CTA,
   Footer,
 } from "../../sections";
@@ -12,13 +12,13 @@ import {
 export function Home() {
   return (
     <>
-      <Header />
+      <NavBar />
       <main>
         <Hero />
         <Features />
         <Platform />
         <HowItWorks />
-        <Testimonials />
+        <Benefits />
         <CTA />
       </main>
       <Footer />

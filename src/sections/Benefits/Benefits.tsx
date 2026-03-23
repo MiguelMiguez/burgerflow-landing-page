@@ -10,7 +10,7 @@ import {
   UsersIcon,
   ChartIcon,
 } from "../../components";
-import styles from "./Testimonials.module.css";
+import styles from "./Benefits.module.css";
 
 const benefits = [
   {
@@ -51,7 +51,7 @@ const benefits = [
   },
 ];
 
-export function Testimonials() {
+export function Benefits() {
   return (
     <Section theme="cream" spacing="xl" id="testimonials">
       <SectionHeader

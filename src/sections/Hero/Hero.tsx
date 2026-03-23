@@ -6,6 +6,7 @@ import {
   Button,
   WhatsAppIcon,
   ArrowRightIcon,
+  WhatsAppConversation,
 } from "../../components";
 import styles from "./Hero.module.css";
 
@@ -76,39 +77,47 @@ export function Hero() {
             <div className={styles.mockupContainer}>
               <div className={styles.phoneMockup}>
                 <div className={styles.phoneScreen}>
-                  <div className={styles.chatBubble}>
-                    <span className={styles.chatIcon}>🤖</span>
-                    <p>¡Hola! Soy BurgerBot. ¿Qué te gustaría ordenar hoy?</p>
-                  </div>
-                  <div className={`${styles.chatBubble} ${styles.user}`}>
-                    <p>Quiero una hamburguesa doble con papas</p>
-                  </div>
-                  <div className={styles.chatBubble}>
-                    <span className={styles.chatIcon}>🍔</span>
-                    <p>
-                      ¡Excelente elección! Tu pedido está listo. Total: $850
-                    </p>
-                  </div>
+                  <WhatsAppConversation />
                 </div>
               </div>
 
               <div className={styles.dashboardMockup}>
-                <div className={styles.dashboardHeader}>
-                  <div className={styles.dashboardDots}>
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                  <span className={styles.dashboardTitle}>
-                    Panel de control
-                  </span>
+                <div className={styles.pdHeader}>
+                  <span className={styles.pdIcon}>📋</span>
+                  <span className={styles.pdTitle}>¿Cómo funciona?</span>
                 </div>
-                <div className={styles.dashboardContent}>
-                  <div className={styles.miniStat}>
-                    <span className={styles.miniStatValue}>24</span>
-                    <span className={styles.miniStatLabel}>Pedidos hoy</span>
+                <div className={styles.pdContent}>
+                  <div className={styles.pdStep}>
+                    <span className={styles.pdStepNumber}>1</span>
+                    <div className={styles.pdStepText}>
+                      <strong>El cliente escribe</strong>
+                      <p>Tu cliente envía un mensaje a WhatsApp</p>
+                    </div>
                   </div>
-                  <div className={styles.miniChart} />
+                  <div className={styles.pdStep}>
+                    <span className={styles.pdStepNumber}>2</span>
+                    <div className={styles.pdStepText}>
+                      <strong>Elige del catálogo</strong>
+                      <p>Selecciona productos y personaliza</p>
+                    </div>
+                  </div>
+                  <div className={styles.pdStep}>
+                    <span className={styles.pdStepNumber}>3</span>
+                    <div className={styles.pdStepText}>
+                      <strong>Confirma el pedido</strong>
+                      <p>Dirección, pago y confirmación</p>
+                    </div>
+                  </div>
+                  <div className={styles.pdStep}>
+                    <span className={styles.pdStepNumber}>4</span>
+                    <div className={styles.pdStepText}>
+                      <strong>¡Listo!</strong>
+                      <p>Recibís el pedido en tu panel</p>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.pdFooter}>
+                  <span>👈 Mirá la conversación en acción</span>
                 </div>
               </div>
             </div>

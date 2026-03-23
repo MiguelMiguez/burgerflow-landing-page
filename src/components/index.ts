@@ -14,6 +14,8 @@ export { Card } from "./Card";
 export { SectionHeader } from "./SectionHeader";
 export { ScreenshotShowcase } from "./ScreenshotShowcase";
 export { TestimonialCard } from "./TestimonialCard";
+export { NavBar } from "./NavBar";
+export { WhatsAppConversation } from "./WhatsAppConversation";
 
 // Icons
 export * from "./Icons";
