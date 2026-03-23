@@ -43,8 +43,6 @@ export function HowItWorks() {
       />
 
       <div className={styles.stepsContainer}>
-        <div className={styles.timeline} />
-
         <Stack direction="horizontal" gap="lg" className={styles.steps}>
           {steps.map((step, index) => (
             <div
@@ -57,12 +55,13 @@ export function HowItWorks() {
                 <span className={styles.stepNumber}>{step.number}</span>
               </div>
               <div className={styles.stepContent}>
-                <Typography variant="h4" color="inverse">
+                <Typography variant="h4" color="inverse" align="center">
                   {step.title}
                 </Typography>
                 <Typography
                   variant="body"
                   color="inverse"
+                  align="center"
                   style={{ opacity: 0.8 }}
                 >
                   {step.description}
