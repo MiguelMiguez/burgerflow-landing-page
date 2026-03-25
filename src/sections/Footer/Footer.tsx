@@ -16,10 +16,6 @@ export function Footer() {
               />
               <span className={styles.logoText}>BurgerFlow</span>
             </a>
-            <Typography variant="body" color="muted" className={styles.tagline}>
-              La plataforma integral para automatizar pedidos de tu restaurante
-              vía WhatsApp.
-            </Typography>
             <div className={styles.social}>
               <a
                 href="https://www.instagram.com/burgerflowar/"
