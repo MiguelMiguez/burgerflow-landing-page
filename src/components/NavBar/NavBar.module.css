@@ -38,7 +38,6 @@
 
 .logoIcon {
   font-size: 2rem;
-  animation: float 3s ease-in-out infinite;
 }
 
 .logoText {
@@ -96,15 +95,17 @@
   min-width: 200px;
 }
 
+/* Mobile Menu Button */
 .mobileMenuBtn {
   display: none;
-  width: 32px;
-  height: 32px;
-  padding: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 10;
+  z-index: calc(var(--z-modal) + 10);
+  position: relative;
 }
 
 .menuBar {
@@ -113,7 +114,8 @@
   width: 100%;
   height: 2px;
   background-color: var(--color-text);
-  transition: all var(--transition-fast);
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .menuBar::before,
@@ -124,7 +126,8 @@
   width: 100%;
   height: 2px;
   background-color: var(--color-text);
-  transition: all var(--transition-fast);
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .menuBar::before {
@@ -135,43 +138,146 @@
   bottom: -8px;
 }
 
-.menuBar.open {
+.mobileMenuBtn.open .menuBar {
   background-color: transparent;
 }
 
-.menuBar.open::before {
+.mobileMenuBtn.open .menuBar::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.menuBar.open::after {
+.mobileMenuBtn.open .menuBar::after {
   bottom: 0;
   transform: rotate(-45deg);
 }
 
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: var(--z-modal);
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Slide Panel */
+.mobilePanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 380px;
+  background-color: var(--color-surface);
+  z-index: calc(var(--z-modal) + 5);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.panelOpen {
+  transform: translateX(0);
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-secondary);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background-color: var(--color-border-light);
+  color: var(--color-text);
+}
+
+.mobileNav {
+  flex: 1;
+  padding: var(--space-4xl) var(--space-xl) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow-y: auto;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.panelOpen .mobileNavLink {
+  animation: slideInLink 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInLink {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:active {
+  background-color: var(--color-primary-lighter);
+  color: var(--color-primary);
+}
+
+.mobileActions {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-bg-subtle);
+}
+
+/* Desktop styles */
+@media (min-width: 969px) {
+  .overlay,
+  .mobilePanel {
+    display: none;
+  }
+}
+
+/* Mobile styles */
 @media (max-width: 968px) {
   .navLinks {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-xl);
-    background-color: var(--color-bg-subtle);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-base);
-  }
-
-  .navLinks.open {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .navLink {
-    font-size: var(--font-size-xl);
+    display: none;
   }
 
   .actions {

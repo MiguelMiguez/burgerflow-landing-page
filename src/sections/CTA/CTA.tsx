@@ -52,7 +52,11 @@ export function CTA() {
               prueba gratuita hoy y automatizá tu restaurante.
             </Typography>
 
-            <Stack direction="horizontal" gap="md" className={`${styles.buttons} ${isInView ? styles.buttonsVisible : ""}`}>
+            <Stack
+              direction="horizontal"
+              gap="md"
+              className={`${styles.buttons} ${isInView ? styles.buttonsVisible : ""}`}
+            >
               <Button
                 variant="secondary"
                 size="xl"
@@ -70,8 +74,8 @@ export function CTA() {
               className={`${styles.benefits} ${isInView ? styles.benefitsVisible : ""}`}
             >
               {benefits.map((benefit, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={styles.benefit}
                   style={{ animationDelay: `${0.4 + index * 0.1}s` }}
                 >

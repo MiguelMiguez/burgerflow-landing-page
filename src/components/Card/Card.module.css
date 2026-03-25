@@ -61,13 +61,13 @@
 /* Hover & Click */
 .hoverable:hover {
   transform: translateY(-8px);
-  box-shadow: 
+  box-shadow:
     var(--shadow-xl),
     0 0 0 1px rgba(99, 102, 241, 0.1);
 }
 
 .hoverable.elevated:hover {
-  box-shadow: 
+  box-shadow:
     0 20px 50px -10px rgba(30, 41, 59, 0.15),
     0 0 0 1px rgba(99, 102, 241, 0.08);
 }

@@ -46,10 +46,19 @@ const showcases = [
   },
 ];
 
-function ShowcaseItem({ showcase, index }: { showcase: typeof showcases[0], index: number }) {
+function ShowcaseItem({
+  showcase,
+  index,
+}: {
+  showcase: (typeof showcases)[0];
+  index: number;
+}) {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.2 });
-  const animationClass = showcase.imagePosition === "left" ? styles.slideFromLeft : styles.slideFromRight;
-  
+  const animationClass =
+    showcase.imagePosition === "left"
+      ? styles.slideFromLeft
+      : styles.slideFromRight;
+
   return (
     <div ref={ref}>
       <ScreenshotShowcase

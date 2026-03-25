@@ -5,7 +5,9 @@
 .card {
   opacity: 0;
   transform: translateY(30px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .cardVisible {
