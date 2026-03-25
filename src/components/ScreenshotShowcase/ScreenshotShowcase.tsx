@@ -77,7 +77,11 @@ export function ScreenshotShowcase({
           {title}
         </Typography>
         {description && (
-          <Typography variant="body-lg" color="secondary">
+          <Typography
+            variant="body-lg"
+            color="secondary"
+            className={styles.description}
+          >
             {description}
           </Typography>
         )}

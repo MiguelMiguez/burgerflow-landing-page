@@ -521,13 +521,14 @@
   }
 
   .stats {
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--space-lg);
     padding: var(--space-lg);
   }
 
   .statDivider {
-    width: 80%;
+    width: 50%;
+    rotate: 90deg;
     height: 1px;
   }
 

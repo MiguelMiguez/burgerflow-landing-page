@@ -46,7 +46,7 @@ export function HowItWorks() {
       />
 
       <div className={styles.stepsContainer} ref={ref}>
-        <Stack direction="horizontal" gap="lg" className={styles.steps}>
+        <Stack direction="horizontal" className={styles.steps}>
           {steps.map((step, index) => (
             <div
               key={index}

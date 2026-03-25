@@ -138,6 +138,10 @@
     gap: var(--space-xl);
   }
 
+  .description {
+    text-align: center;
+  }
+
   .image-right {
     direction: ltr;
   }
