@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  padding-top: 120px !important;
+  padding-top: 150px !important;
   z-index: 1;
 }
 
@@ -31,6 +31,23 @@
   );
   filter: blur(80px);
   pointer-events: none;
+  animation: glowFloat 8s ease-in-out infinite;
+}
+
+@keyframes glowFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translate(-30px, 20px) scale(1.1);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate(20px, -30px) scale(0.95);
+    opacity: 0.5;
+  }
 }
 
 .content {
@@ -56,7 +73,20 @@
 }
 
 .title {
-  animation: fadeInUp 0.6s ease-out 0.1s both;
+  animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
 }
 
 .highlight {
@@ -68,14 +98,37 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .subtitle {
-  animation: fadeInUp 0.6s ease-out 0.2s both;
+  animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 .cta {
-  animation: fadeInUp 0.6s ease-out 0.3s both;
+  animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .stats {
@@ -86,7 +139,26 @@
   background-color: var(--color-surface);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
-  animation: fadeInUp 0.6s ease-out 0.4s both;
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.stats:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stat {
@@ -102,6 +174,11 @@
   font-size: var(--font-size-3xl);
   font-weight: 800;
   color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.stat:hover .statValue {
+  transform: scale(1.05);
 }
 
 .statLabel {
@@ -118,7 +195,18 @@
 
 .heroImage {
   margin-top: var(--space-3xl);
-  animation: fadeInUp 0.6s ease-out 0.5s both;
+  animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .mockupContainer {
@@ -126,11 +214,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: var(--space-xl);
+  gap: var(--space-3xl);
 }
 
 .phoneMockup {
-  width: 280px;
+  width: 300px;
   height: 560px;
   background: linear-gradient(145deg, #1a1a2e 0%, #2d2d44 100%);
   border-radius: 40px;
@@ -138,7 +226,23 @@
   box-shadow:
     var(--shadow-xl),
     0 30px 60px rgba(0, 0, 0, 0.3);
-  animation: float 4s ease-in-out infinite;
+  animation: phoneFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+  transition: transform 0.4s ease;
+}
+
+.phoneMockup:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+@keyframes phoneFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotate(-3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
 }
 
 .phoneScreen {
@@ -187,7 +291,23 @@
   box-shadow: var(--shadow-xl);
   overflow: hidden;
   transform: translateY(-40px);
-  animation: float 4s ease-in-out infinite 0.5s;
+  animation: dashboardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
+  transition: transform 0.4s ease;
+}
+
+.dashboardMockup:hover {
+  transform: translateY(-48px) scale(1.02);
+}
+
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-40px) scale(1);
+  }
 }
 
 .dashboardHeader {
@@ -426,7 +546,7 @@
   }
 
   .phoneMockup {
-    width: 240px;
+    width: 280px;
     height: 480px;
   }
 

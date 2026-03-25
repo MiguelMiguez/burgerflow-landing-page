@@ -1,4 +1,5 @@
 import { Section, SectionHeader, Stack, Typography } from "../../components";
+import { useInView } from "../../hooks";
 import styles from "./HowItWorks.module.css";
 
 const steps = [
@@ -33,6 +34,8 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.15 });
+
   return (
     <Section theme="dark" spacing="xl" id="how-it-works">
       <SectionHeader
@@ -42,12 +45,12 @@ export function HowItWorks() {
         theme="dark"
       />
 
-      <div className={styles.stepsContainer}>
+      <div className={styles.stepsContainer} ref={ref}>
         <Stack direction="horizontal" gap="lg" className={styles.steps}>
           {steps.map((step, index) => (
             <div
               key={index}
-              className={styles.step}
+              className={`${styles.step} ${isInView ? styles.stepVisible : ""}`}
               style={{ animationDelay: `${index * 0.15}s` }}
             >
               <div className={styles.stepIcon}>

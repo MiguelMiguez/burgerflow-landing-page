@@ -6,8 +6,8 @@ import {
   Button,
   WhatsAppIcon,
   ArrowRightIcon,
-  WhatsAppConversation,
 } from "../../components";
+import { WhatsAppConversation } from "../../components/WhatsAppConversation";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -19,7 +19,7 @@ export function Hero() {
       <Container size="lg">
         <Stack
           direction="vertical"
-          gap="xl"
+          gap="2xl"
           align="center"
           className={styles.content}
         >

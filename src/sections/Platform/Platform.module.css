@@ -4,16 +4,40 @@
 
 .showcase {
   opacity: 0;
-  animation: fadeInUp 0.7s ease-out forwards;
+  transform: translateY(40px);
+  transition: transform 0.3s ease;
 }
 
-@keyframes fadeInUp {
+.slideFromLeft {
+  animation: slideFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.slideFromRight {
+  animation: slideFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.showcase:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes slideFromLeft {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateX(-60px) translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
   }
 }

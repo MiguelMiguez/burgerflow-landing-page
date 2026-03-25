@@ -1,294 +1,186 @@
-/* ===========================================
-   NAVBAR - Base Styles
-   =========================================== */
-
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  padding: 16px 0;
-  background-color: #f8fafc;
-  transition: padding 0.3s ease, box-shadow 0.3s ease;
+  z-index: var(--z-sticky);
+  padding: var(--space-lg) 0;
+  transition: all var(--transition-base);
 }
 
-.header.scrolled {
-  padding: 12px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.scrolled {
+  padding: var(--space-md) 0;
+  background-color: rgba(248, 250, 252, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
 }
 
-.header.menuOpen {
-  background-color: #f8fafc;
-}
-
-.headerContent {
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-xl);
 }
-
-/* ===========================================
-   LOGO
-   =========================================== */
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
   text-decoration: none;
-  z-index: 1001;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
-.logoImage {
+.logoimage {
   width: 40px;
   height: 40px;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
 }
 
 .logoText {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
   font-weight: 800;
-  color: #1e293b;
+  color: var(--color-text);
   letter-spacing: -0.02em;
 }
 
-/* ===========================================
-   DESKTOP NAVIGATION
-   =========================================== */
-
-.desktopNav {
+.navLinks {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  gap: var(--space-xl);
+  list-style: none;
+  flex: 1;
+  margin: 0 auto;
 }
 
 .navLink {
   font-family: var(--font-body);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-sm);
   font-weight: 500;
-  color: #475569;
+  color: var(--color-text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
-  letter-spacing: 0.01em;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-base);
 }
 
 .navLink:hover {
-  color: #1e293b;
+  color: var(--color-primary);
 }
 
-.desktopActions {
+.navLink:hover::after {
+  width: 100%;
+}
+
+.actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  min-width: 200px;
 }
 
-.contactLink {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #475569;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  letter-spacing: 0.01em;
-}
-
-.contactLink:hover {
-  color: #1e293b;
-}
-
-.ctaButton {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: #1e293b;
-  text-decoration: none;
-  padding: 8px 16px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  letter-spacing: 0.01em;
-}
-
-.ctaButton:hover {
-  border-color: #1e293b;
-  background-color: #1e293b;
-  color: #ffffff;
-}
-
-/* ===========================================
-   MOBILE MENU BUTTON
-   =========================================== */
-
-.menuButton {
+.mobileMenuBtn {
   display: none;
-  width: 40px;
-  height: 40px;
-  padding: 0;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 10;
 }
 
-.menuIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.menuLine {
+.menuBar {
   display: block;
   position: relative;
-  width: 24px;
+  width: 100%;
   height: 2px;
-  background-color: #1e293b;
-  transition: all 0.3s ease;
+  background-color: var(--color-text);
+  transition: all var(--transition-fast);
 }
 
-.menuLine::before,
-.menuLine::after {
+.menuBar::before,
+.menuBar::after {
   content: "";
   position: absolute;
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #1e293b;
-  transition: all 0.3s ease;
+  background-color: var(--color-text);
+  transition: all var(--transition-fast);
 }
 
-.menuLine::before {
+.menuBar::before {
   top: -8px;
 }
 
-.menuLine::after {
+.menuBar::after {
   bottom: -8px;
 }
 
-.menuLine.menuLineOpen {
+.menuBar.open {
   background-color: transparent;
 }
 
-.menuLine.menuLineOpen::before {
+.menuBar.open::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.menuLine.menuLineOpen::after {
+.menuBar.open::after {
   bottom: 0;
   transform: rotate(-45deg);
 }
 
-/* ===========================================
-   MOBILE OVERLAY - Full screen
-   =========================================== */
-
-.mobileOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  background-color: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.mobileNav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  padding: 80px 24px 24px;
-}
-
-.mobileLink {
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: #475569;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  letter-spacing: 0.01em;
-}
-
-.mobileLink:hover {
-  color: #1e293b;
-}
-
-.mobileActions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.mobileContactLink {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 500;
-  color: #475569;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.mobileContactLink:hover {
-  color: #1e293b;
-}
-
-.mobileCtaButton {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1e293b;
-  text-decoration: none;
-  padding: 12px 32px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.mobileCtaButton:hover {
-  border-color: #1e293b;
-  background-color: #1e293b;
-  color: #ffffff;
-}
-
-/* ===========================================
-   RESPONSIVE - Hide/Show elements
-   =========================================== */
-
 @media (max-width: 968px) {
-  .desktopNav {
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-xl);
+    background-color: var(--color-bg-subtle);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .navLinks.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navLink {
+    font-size: var(--font-size-xl);
+  }
+
+  .actions {
     display: none;
   }
 
-  .desktopActions {
-    display: none;
-  }
-
-  .menuButton {
+  .mobileMenuBtn {
     display: flex;
-  }
-}
-
-@media (min-width: 969px) {
-  .mobileOverlay {
-    display: none;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -4,8 +4,8 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
 }
 
 /* Variants */
@@ -17,6 +17,14 @@
 .outlined {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.outlined:hover {
+  border-color: var(--color-primary);
 }
 
 .filled {
@@ -52,8 +60,16 @@
 
 /* Hover & Click */
 .hoverable:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: 
+    var(--shadow-xl),
+    0 0 0 1px rgba(99, 102, 241, 0.1);
+}
+
+.hoverable.elevated:hover {
+  box-shadow: 
+    0 20px 50px -10px rgba(30, 41, 59, 0.15),
+    0 0 0 1px rgba(99, 102, 241, 0.08);
 }
 
 .clickable {
@@ -61,7 +77,7 @@
 }
 
 .clickable:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
 }
 
 /* Image */

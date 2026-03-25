@@ -10,6 +10,7 @@ import {
   CreditCardIcon,
   TruckIcon,
 } from "../../components";
+import { useInView } from "../../hooks";
 import styles from "./Features.module.css";
 
 const features = [
@@ -52,6 +53,8 @@ const features = [
 ];
 
 export function Features() {
+  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
   return (
     <Section theme="cream" spacing="xl" id="features">
       <SectionHeader
@@ -60,21 +63,23 @@ export function Features() {
         description="Una plataforma completa diseñada específicamente para restaurantes que quieren automatizar y escalar su operación de delivery."
       />
 
-      <Grid columns={3} gap="lg" className={styles.grid}>
-        {features.map((feature, index) => (
-          <Card
-            key={index}
-            variant="elevated"
-            padding="xl"
-            icon={feature.icon}
-            title={feature.title}
-            description={feature.description}
-            hoverable
-            className={styles.card}
-            style={{ animationDelay: `${index * 0.1}s` }}
-          />
-        ))}
-      </Grid>
+      <div ref={ref} className={styles.grid}>
+        <Grid columns={3} gap="lg">
+          {features.map((feature, index) => (
+            <Card
+              key={index}
+              variant="elevated"
+              padding="xl"
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+              hoverable
+              className={`${styles.card} ${isInView ? styles.cardVisible : ""}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            />
+          ))}
+        </Grid>
+      </div>
     </Section>
   );
 }

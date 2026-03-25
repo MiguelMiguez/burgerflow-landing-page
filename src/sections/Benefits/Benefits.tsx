@@ -10,6 +10,7 @@ import {
   UsersIcon,
   ChartIcon,
 } from "../../components";
+import { useInView } from "../../hooks";
 import styles from "./Benefits.module.css";
 
 const benefits = [
@@ -52,6 +53,8 @@ const benefits = [
 ];
 
 export function Benefits() {
+  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
   return (
     <Section theme="cream" spacing="xl" id="testimonials">
       <SectionHeader
@@ -60,21 +63,23 @@ export function Benefits() {
         description="Descubrí todas las ventajas de automatizar tu restaurante con nuestra plataforma."
       />
 
-      <Grid columns={3} gap="lg" className={styles.grid}>
-        {benefits.map((benefit, index) => (
-          <Card
-            key={index}
-            variant="elevated"
-            padding="xl"
-            icon={benefit.icon}
-            title={benefit.title}
-            description={benefit.description}
-            hoverable
-            className={styles.card}
-            style={{ animationDelay: `${index * 0.1}s` }}
-          />
-        ))}
-      </Grid>
+      <div ref={ref} className={styles.grid}>
+        <Grid columns={3} gap="lg">
+          {benefits.map((benefit, index) => (
+            <Card
+              key={index}
+              variant="elevated"
+              padding="xl"
+              icon={benefit.icon}
+              title={benefit.title}
+              description={benefit.description}
+              hoverable
+              className={`${styles.card} ${isInView ? styles.cardVisible : ""}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            />
+          ))}
+        </Grid>
+      </div>
     </Section>
   );
 }

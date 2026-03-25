@@ -4,6 +4,7 @@ import {
   Stack,
   ScreenshotShowcase,
 } from "../../components";
+import { useInView } from "../../hooks";
 import styles from "./Platform.module.css";
 
 const showcases = [
@@ -45,6 +46,25 @@ const showcases = [
   },
 ];
 
+function ShowcaseItem({ showcase, index }: { showcase: typeof showcases[0], index: number }) {
+  const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const animationClass = showcase.imagePosition === "left" ? styles.slideFromLeft : styles.slideFromRight;
+  
+  return (
+    <div ref={ref}>
+      <ScreenshotShowcase
+        badge={showcase.badge}
+        title={showcase.title}
+        description={showcase.description}
+        imagePosition={showcase.imagePosition}
+        image={showcase.image}
+        className={`${styles.showcase} ${isInView ? animationClass : ""}`}
+        style={{ animationDelay: `${index * 0.1}s` }}
+      />
+    </div>
+  );
+}
+
 export function Platform() {
   return (
     <Section theme="light" spacing="xl" id="platform">
@@ -56,16 +76,7 @@ export function Platform() {
 
       <Stack direction="vertical" gap="2xl" className={styles.showcases}>
         {showcases.map((showcase, index) => (
-          <ScreenshotShowcase
-            key={index}
-            badge={showcase.badge}
-            title={showcase.title}
-            description={showcase.description}
-            imagePosition={showcase.imagePosition}
-            image={showcase.image}
-            className={styles.showcase}
-            style={{ animationDelay: `${index * 0.15}s` }}
-          />
+          <ShowcaseItem key={index} showcase={showcase} index={index} />
         ))}
       </Stack>
     </Section>
