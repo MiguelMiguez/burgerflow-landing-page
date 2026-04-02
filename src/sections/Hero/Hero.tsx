@@ -63,13 +63,13 @@ export function Hero() {
 
           <div className={styles.stats}>
             <div className={styles.stat}>
-              <span className={styles.statValue}>100%</span>
-              <span className={styles.statLabel}>Personalizado</span>
+              <span className={styles.statValue}>0%</span>
+              <span className={styles.statLabel}>Pedidos perdidos</span>
             </div>
             <div className={styles.statDivider} />
             <div className={styles.stat}>
               <span className={styles.statValue}>24/7</span>
-              <span className={styles.statLabel}>Asistencia técnica</span>
+              <span className={styles.statLabel}>Tomando órdenes</span>
             </div>
           </div>
 
